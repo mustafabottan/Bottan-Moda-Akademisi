@@ -1,10 +1,17 @@
 import Iyzipay from "iyzipay";
 
-const iyzipay = new Iyzipay({
-  apiKey: process.env.IYZICO_API_KEY!,
-  secretKey: process.env.IYZICO_SECRET_KEY!,
-  uri: process.env.IYZICO_BASE_URL || "https://sandbox-api.iyzipay.com",
-});
+let _iyzipay: Iyzipay | null = null;
+
+function getIyzipay() {
+  if (!_iyzipay) {
+    _iyzipay = new Iyzipay({
+      apiKey: process.env.IYZICO_API_KEY!,
+      secretKey: process.env.IYZICO_SECRET_KEY!,
+      uri: process.env.IYZICO_BASE_URL || "https://sandbox-api.getIyzipay().com",
+    });
+  }
+  return _iyzipay;
+}
 
 export interface CreatePaymentParams {
   price: string;
@@ -72,7 +79,7 @@ export function createCheckoutForm(params: CreatePaymentParams): Promise<any> {
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    iyzipay.checkoutFormInitialize.create(request as any, (err: Error, result: any) => {
+    getIyzipay().checkoutFormInitialize.create(request as any, (err: Error, result: any) => {
       if (err) reject(err);
       else resolve(result);
     });
@@ -82,7 +89,7 @@ export function createCheckoutForm(params: CreatePaymentParams): Promise<any> {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function retrieveCheckoutForm(token: string): Promise<any> {
   return new Promise((resolve, reject) => {
-    iyzipay.checkoutForm.retrieve(
+    getIyzipay().checkoutForm.retrieve(
       { locale: Iyzipay.LOCALE.TR, token },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (err: Error, result: any) => {
