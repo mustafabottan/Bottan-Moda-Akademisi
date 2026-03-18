@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { formatPrice, formatDuration } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Package, Play, Clock, ArrowRight } from "lucide-react";
+import { Package, Play, Clock, ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +20,12 @@ async function getFeaturedPackages() {
   });
 }
 
+async function getBook() {
+  return prisma.book.findFirst({
+    where: { isPublished: true },
+  });
+}
+
 async function getActiveCampaigns() {
   const now = new Date();
   return prisma.campaign.findMany({
@@ -33,9 +39,10 @@ async function getActiveCampaigns() {
 }
 
 export default async function HomePage() {
-  const [featuredPackages, campaigns] = await Promise.all([
+  const [featuredPackages, campaigns, book] = await Promise.all([
     getFeaturedPackages(),
     getActiveCampaigns(),
+    getBook(),
   ]);
 
   return (
@@ -57,6 +64,51 @@ export default async function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* Kitap + Paket Kampanya Bülteni */}
+      {book && featuredPackages.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10 mb-8">
+          <div className="bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 items-center">
+              <div className="p-4 flex justify-center">
+                {book.thumbnailUrl && (
+                  <img
+                    src={book.thumbnailUrl}
+                    alt={book.title}
+                    className="h-48 object-contain rounded-lg shadow-lg"
+                  />
+                )}
+              </div>
+              <div className="p-6 md:col-span-2">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles className="h-5 w-5 text-yellow-200" />
+                  <span className="text-yellow-100 text-sm font-semibold uppercase tracking-wide">Ozel Kampanya</span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                  Kitap + Video Paketi Birlikte Alin!
+                </h3>
+                <p className="text-amber-100 mb-4">
+                  &quot;{book.title}&quot; kitabi ve video egitim paketini birlikte alarak moda tasariminda kendinizi gelistirin.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/kitap">
+                    <Button className="bg-white text-amber-700 hover:bg-amber-50">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Kitabi Incele
+                    </Button>
+                  </Link>
+                  <Link href="/paketler">
+                    <Button className="bg-amber-800 text-white hover:bg-amber-900 border border-amber-400">
+                      <Play className="mr-2 h-4 w-4" />
+                      Paketleri Incele
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Campaign Banners */}
       {campaigns.length > 0 && (

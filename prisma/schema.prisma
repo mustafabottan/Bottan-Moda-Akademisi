@@ -146,6 +146,21 @@ model Campaign {
   @@map("campaigns")
 }
 
+model Book {
+  id            String   @id @default(uuid())
+  title         String
+  description   String?
+  slug          String   @unique
+  price         Decimal  @db.Decimal(10, 2)
+  discountPrice Decimal? @map("discount_price") @db.Decimal(10, 2)
+  thumbnailUrl  String?  @map("thumbnail_url")
+  isPublished   Boolean  @default(false) @map("is_published")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("books")
+}
+
 model CampaignPackage {
   campaignId String @map("campaign_id")
   packageId  String @map("package_id")

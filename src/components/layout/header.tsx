@@ -33,6 +33,9 @@ export function Header() {
             <Link href="/paketler" className="text-sm text-gray-600 hover:text-gray-900">
               Paketler
             </Link>
+            <Link href="/kitap" className="text-sm text-gray-600 hover:text-gray-900">
+              Kitap
+            </Link>
             {user ? (
               <>
                 <Link href="/panel" className="text-sm text-gray-600 hover:text-gray-900">
@@ -82,6 +85,9 @@ export function Header() {
           <div className="px-4 py-3 space-y-2">
             <Link href="/paketler" className="block py-2 text-sm text-gray-600" onClick={() => setMobileMenuOpen(false)}>
               Paketler
+            </Link>
+            <Link href="/kitap" className="block py-2 text-sm text-gray-600" onClick={() => setMobileMenuOpen(false)}>
+              Kitap
             </Link>
             {user ? (
               <>
