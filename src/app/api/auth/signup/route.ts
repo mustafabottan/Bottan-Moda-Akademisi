@@ -12,7 +12,8 @@ export async function POST(request: Request) {
 
     const supabaseAdmin = createAdminClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      { auth: { autoRefreshToken: false, persistSession: false } }
     );
 
     const { data, error } = await supabaseAdmin.auth.admin.createUser({
@@ -28,8 +29,11 @@ export async function POST(request: Request) {
     }
 
     if (data.user) {
-      await prisma.user.create({
-        data: {
+      // Prisma'da kullanıcı zaten varsa atla
+      await prisma.user.upsert({
+        where: { id: data.user.id },
+        update: { email: data.user.email!, fullName },
+        create: {
           id: data.user.id,
           email: data.user.email!,
           fullName,
