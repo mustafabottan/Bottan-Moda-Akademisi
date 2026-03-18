@@ -44,10 +44,10 @@ export default async function HomePage() {
       <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Video Eğitim Paketleri
+            Bottan Moda Akademisi
           </h1>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Uzman eğitmenlerden hazırlanmış video paketleri ile kendinizi geliştirin
+            Moda dünyasında uzmanlaşmak için video eğitim paketlerimizi keşfedin
           </p>
           <Link href="/paketler">
             <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
@@ -154,7 +154,7 @@ export default async function HomePage() {
             <div>
               <Package className="h-10 w-10 text-blue-600 mx-auto mb-3" />
               <h3 className="text-3xl font-bold text-gray-900">{featuredPackages.length}+</h3>
-              <p className="text-gray-500">Video Paketi</p>
+              <p className="text-gray-500">Eğitim Paketi</p>
             </div>
             <div>
               <Play className="h-10 w-10 text-blue-600 mx-auto mb-3" />

@@ -46,7 +46,7 @@ export default function RegisterPage() {
     <Card className="w-full max-w-md">
       <CardHeader>
         <div className="text-center">
-          <Link href="/" className="text-2xl font-bold text-blue-600">VideoPaket</Link>
+          <Link href="/" className="text-2xl font-bold text-blue-600">Bottan Akademi</Link>
           <h1 className="text-xl font-semibold text-gray-900 mt-4">Kayıt Ol</h1>
           <p className="text-sm text-gray-500 mt-1">Yeni hesap oluşturun</p>
         </div>

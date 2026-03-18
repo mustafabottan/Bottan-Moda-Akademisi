@@ -64,7 +64,7 @@ export function createCheckoutForm(params: CreatePaymentParams): Promise<any> {
         {
           id: params.basketId,
           name: params.packageTitle,
-          category1: "Video Paket",
+          category1: "Bottan Akademi",
           itemType: Iyzipay.BASKET_ITEM_TYPE.VIRTUAL,
           price: params.paidPrice,
         },

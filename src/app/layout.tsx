@@ -10,8 +10,8 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "VideoPaket - Video Eğitim Paketleri",
-  description: "En kaliteli video eğitim paketleri ile kendinizi geliştirin",
+  title: "Bottan Moda Akademisi - Video Eğitim Paketleri",
+  description: "Bottan Moda Akademisi ile kendinizi geliştirin",
 };
 
 export default function RootLayout({

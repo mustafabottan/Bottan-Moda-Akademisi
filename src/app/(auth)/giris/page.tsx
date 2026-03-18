@@ -28,7 +28,8 @@ export default function LoginPage() {
       });
 
       if (error) {
-        setError("E-posta veya şifre hatalı");
+        console.error("Login error:", error.message);
+        setError(error.message);
         return;
       }
 
@@ -45,7 +46,7 @@ export default function LoginPage() {
     <Card className="w-full max-w-md">
       <CardHeader>
         <div className="text-center">
-          <Link href="/" className="text-2xl font-bold text-blue-600">VideoPaket</Link>
+          <Link href="/" className="text-2xl font-bold text-blue-600">Bottan Akademi</Link>
           <h1 className="text-xl font-semibold text-gray-900 mt-4">Giriş Yap</h1>
           <p className="text-sm text-gray-500 mt-1">Hesabınıza giriş yapın</p>
         </div>

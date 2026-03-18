@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(request: Request) {
@@ -10,16 +10,20 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Tüm alanlar zorunludur" }, { status: 400 });
     }
 
-    const supabase = await createClient();
-    const { data, error } = await supabase.auth.signUp({
+    const supabaseAdmin = createAdminClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+
+    const { data, error } = await supabaseAdmin.auth.admin.createUser({
       email,
       password,
-      options: {
-        data: { full_name: fullName },
-      },
+      email_confirm: true,
+      user_metadata: { full_name: fullName },
     });
 
     if (error) {
+      console.error("Signup error:", error.message);
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
@@ -34,7 +38,8 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ message: "Kayıt başarılı" });
-  } catch {
-    return NextResponse.json({ error: "Bir hata oluştu" }, { status: 500 });
+  } catch (err) {
+    console.error("Signup error:", err);
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Bir hata oluştu" }, { status: 500 });
   }
 }
