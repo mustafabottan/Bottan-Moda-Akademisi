@@ -82,25 +82,25 @@ export default async function HomePage() {
               <div className="p-6 md:col-span-2">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="h-5 w-5 text-yellow-200" />
-                  <span className="text-yellow-100 text-sm font-semibold uppercase tracking-wide">Ozel Kampanya</span>
+                  <span className="text-yellow-100 text-sm font-semibold uppercase tracking-wide">Özel Kampanya</span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                  Kitap + Video Paketi Birlikte Alin!
+                  Kitap + Video Paketi Birlikte Alın!
                 </h3>
                 <p className="text-amber-100 mb-4">
-                  &quot;{book.title}&quot; kitabi ve video egitim paketini birlikte alarak moda tasariminda kendinizi gelistirin.
+                  &quot;{book.title}&quot; kitabı ve video eğitim paketini birlikte alarak moda tasarımında kendinizi geliştirin.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Link href="/kitap">
                     <Button className="bg-white text-amber-700 hover:bg-amber-50">
                       <BookOpen className="mr-2 h-4 w-4" />
-                      Kitabi Incele
+                      Kitabı İncele
                     </Button>
                   </Link>
                   <Link href="/paketler">
                     <Button className="bg-amber-800 text-white hover:bg-amber-900 border border-amber-400">
                       <Play className="mr-2 h-4 w-4" />
-                      Paketleri Incele
+                      Paketleri İncele
                     </Button>
                   </Link>
                 </div>

@@ -81,26 +81,26 @@ export default async function BookPage() {
             <CardContent className="p-6 space-y-4">
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Truck className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                <span>Turkiye genelinde kargo ile teslim</span>
+                <span>Türkiye genelinde kargo ile teslim</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Shield className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                <span>Orijinal basim, kaliteli baski</span>
+                <span>Orijinal basım, kaliteli baskı</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <BookOpen className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                <span>Pratik drapaj teknikleri ve kalip cizimleri</span>
+                <span>Pratik drapaj teknikleri ve kalıp çizimleri</span>
               </div>
             </CardContent>
           </Card>
 
           <Button size="lg" className="w-full bg-amber-600 hover:bg-amber-700 text-lg py-6">
             <BookOpen className="mr-2 h-5 w-5" />
-            Satin Al
+            Satın Al
           </Button>
 
           <p className="text-xs text-gray-400 text-center mt-3">
-            Odeme sistemi yakinda aktif olacaktir.
+            Ödeme sistemi yakında aktif olacaktır.
           </p>
         </div>
       </div>
