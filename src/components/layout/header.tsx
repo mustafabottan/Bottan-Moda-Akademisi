@@ -22,26 +22,26 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
+    <header className="sticky top-0 z-40 glass border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold text-blue-600">
+          <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             Bottan Akademi
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
-            <Link href="/paketler" className="text-sm text-gray-600 hover:text-gray-900">
+          <nav className="hidden md:flex items-center gap-1">
+            <Link href="/paketler" className="text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
               Paketler
             </Link>
-            <Link href="/kitap" className="text-sm text-gray-600 hover:text-gray-900">
+            <Link href="/kitap" className="text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
               Kitap
             </Link>
             {user ? (
               <>
-                <Link href="/panel" className="text-sm text-gray-600 hover:text-gray-900">
+                <Link href="/panel" className="text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
                   Panel
                 </Link>
-                <Link href="/paketlerim" className="text-sm text-gray-600 hover:text-gray-900">
+                <Link href="/paketlerim" className="text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
                   Paketlerim
                 </Link>
                 {user.role === "ADMIN" && (
